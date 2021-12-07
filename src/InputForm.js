@@ -3,6 +3,7 @@ import axios from "axios";
 import Container from "react-bootstrap/Container"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
+import LocationCard from "./LocationCard";
 
 class InputForm extends Component {
 
@@ -18,7 +19,9 @@ class InputForm extends Component {
     async getLocationData (inputData){
         try {
             const response = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_IQ_KEY}&q=${this.state.input}&format=json`);
-            console.log(response.data[0]);
+            this.setState({
+                locationObject: response.data[0]
+            })
         } 
         catch (error) {
             console.error(error);
@@ -44,7 +47,7 @@ class InputForm extends Component {
                 Submit
             </Button>
             </Form>
-            <h2>{this.state.input}</h2>
+            <LocationCard location={this.state.locationObject}/>
         </Container>
         );
     }
