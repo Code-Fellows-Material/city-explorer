@@ -26,6 +26,8 @@ V-1.1.0: 12/6/21  Application now has a fully-functional get requests, with erro
 - Ryan Lee: Data Flow Diagram
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 
+![Data Flow Diagram](./public/webrequestcycle.PNG)
+
 ## Time Estimate 1
 
 Name of feature: Feature 1
