@@ -6,14 +6,15 @@ class ErrorCard extends Component {
 
     render() {
         return (
-        <Container>
-            <Card border="danger" style={{ width: '18rem'}}>
-            <Card.Title>Error!</Card.Title>
-            <Card.Body>
-                {this.props.error}
-            </Card.Body>
-            </Card>
-        </Container>
+            <Container className="p-5">
+                <Card border="danger" style={{ width: "30rem", margin: "auto" }}>
+                    <Card.Header style={{ color: "red", textAlign: 'center' ,fontSize: "2em" }}>Error!</Card.Header>
+                    <Card.Body style={{ textAlign: 'center' , fontSize: "1.5em" }}>
+                        {this.props.error}
+                        <p> Please try another search...</p>
+                    </Card.Body>
+                </Card>
+            </Container>
         );
     }
 }

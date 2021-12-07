@@ -21,8 +21,8 @@ class App extends Component {
   async getLocationData (){
       try {
           const response = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_IQ_KEY}&q=${this.state.input}&format=json`);
-          console.log(response);
           this.setState({
+              error: false, 
               locationObject: response.data[0]
 
           })
@@ -31,17 +31,18 @@ class App extends Component {
           })
       } 
       catch (error) {
-        this.setState({ 
-          error: true, 
-          errorResponse: error.response.data.error 
-        })
+          this.setState({ 
+            error: true, 
+            errorResponse: error.response.data.error 
+          })
       }
   }
 
   setLocation = (inputVal) => {
       if(inputVal === ''){
         this.setState({
-          locationObject: {}
+          locationObject: {},
+          error: false
         })
       } else {
         this.setState({
@@ -53,7 +54,7 @@ class App extends Component {
 
   render() {
     return (
-      <Container>
+      <Container id="app-container" fluid>
         <InputForm setLocation={this.setLocation} input={this.state.input} />
         {this.state.error ? <ErrorCard error={this.state.errorResponse} /> : Object.keys(this.state.locationObject).length !== 0  && <LocationCard img={this.state.ImageURL} location={this.state.locationObject}/>}
       </Container>
