@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Card from 'react-bootstrap/Card'
-import Button from "react-bootstrap/Button"
 import ListGroup from "react-bootstrap/ListGroup";
 
 class LocationCard extends Component {
@@ -17,7 +16,6 @@ class LocationCard extends Component {
                     <ListGroup.Item>Latitude: {this.props.location.lat}</ListGroup.Item>
                     <ListGroup.Item>Long: {this.props.location.lat}</ListGroup.Item>
                 </ListGroup>
-                <Button variant="primary">Go somewhere</Button>
             </Card.Body>
             </Card>
         </Container>
