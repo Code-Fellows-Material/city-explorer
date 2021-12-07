@@ -12,6 +12,7 @@ class InputForm extends Component {
         this.state = {
             input: '',
             locationObject: {},
+            ImageURL: '',
             error: false
         }
     }
@@ -21,6 +22,9 @@ class InputForm extends Component {
             const response = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_IQ_KEY}&q=${this.state.input}&format=json`);
             this.setState({
                 locationObject: response.data[0]
+            })
+            this.setState({
+                ImageURL: `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_IQ_KEY}&center=[${this.state.locationObject.lat},${this.state.locationObject.lon}]&zoom=11`
             })
         } 
         catch (error) {
@@ -47,7 +51,7 @@ class InputForm extends Component {
                 Submit
             </Button>
             </Form>
-            <LocationCard location={this.state.locationObject}/>
+            <LocationCard img={this.state.ImageURL} location={this.state.locationObject}/>
         </Container>
         );
     }

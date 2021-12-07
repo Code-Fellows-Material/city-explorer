@@ -11,7 +11,7 @@ class LocationCard extends Component {
         <Container>
             <Card>
             <Card.Title>{this.props.location.display_name}</Card.Title>
-            <Card.Img variant="top" src="holder.js/100px180" />
+            <Card.Img variant="top" src={this.props.img} />
             <Card.Body>
                 <ListGroup variant="flush">
                     <ListGroup.Item>Latitude: {this.props.location.lat}</ListGroup.Item>
