@@ -25,3 +25,27 @@ V-1.1.0: 12/6/21  Application now has a fully-functional get requests, with erro
 ## Credit and Collaborations
 - Ryan Lee: Data Flow Diagram
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+
+## Time Estimate 1
+
+Name of feature: Feature 1
+
+Estimate of time needed to complete: 1.5hrs
+
+Start time: 3:30
+
+Finish time: 5:00
+
+Actual time needed to complete: 1.5hrs
+
+## Time Estimate 2
+
+Name of feature: Feature 2 & 3
+
+Estimate of time needed to complete: 2.5hrs
+
+Start time: 5:15
+
+Finish time: 8:15
+
+Actual time needed to complete: 3hrs
