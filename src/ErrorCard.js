@@ -8,7 +8,7 @@ class ErrorCard extends Component {
         return (
             <Container className="p-5">
                 <Card border="danger" style={{ width: "30rem", margin: "auto" }}>
-                    <Card.Header style={{ color: "red", textAlign: 'center' ,fontSize: "2em" }}>Error!</Card.Header>
+                    <Card.Header style={{ color: "red", textAlign: 'center' ,fontSize: "2em" }}>{this.props.type} Error!</Card.Header>
                     <Card.Body style={{ textAlign: 'center' , fontSize: "1.5em" }}>
                         {this.props.error}
                         <p> Please try another search...</p>
