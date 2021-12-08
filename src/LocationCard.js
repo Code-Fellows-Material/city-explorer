@@ -10,7 +10,7 @@ class LocationCard extends Component {
             <Card border="dark" style={{ width: "40rem", margin: "auto" }}>
                 <Card.Header style={{textAlign: 'center' ,fontSize: "2em" }}>{this.props.location.display_name}</Card.Header>
                 <Container className="p-3">
-                    <Card.Img variant="top" src={this.props.img} rounded />
+                    <Card.Img variant="top" src={this.props.img} />
                 </Container>
                 <Card.Body>
                     <Card.Footer style={{textAlign: 'center' ,fontSize: "1.2em" }}>
