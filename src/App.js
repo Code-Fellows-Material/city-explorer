@@ -29,7 +29,7 @@ class App extends Component {
   async getWeatherData() {
     try {
       const weatherResponse = await axios.get(
-        `http://localhost:3001/weather?lat=${this.state.locationObject.lat}&lon=${this.state.locationObject.lon}`
+        `${process.env.REACT_APP_SERVER}/weather?lat=${this.state.locationObject.lat}&lon=${this.state.locationObject.lon}`
       );
       console.log(weatherResponse.data);
       this.setState({
@@ -39,7 +39,7 @@ class App extends Component {
     } catch (error) {
       this.setState({
         weatherDataError: true,
-        weatherErrorResponse: error.response.data.error,
+        weatherErrorResponse: "Error",
       });
     }
   }
@@ -47,7 +47,7 @@ class App extends Component {
   async getMovieData() {
     try {
       const movieResponse = await axios.get(
-        `http://localhost:3001/movie?searchQuery=${this.state.input}`
+        `https://kl-city-explorer-api.herokuapp.com/movie?searchQuery=${this.state.input}`
       );
       console.log(movieResponse.data);
       this.setState({
@@ -57,7 +57,7 @@ class App extends Component {
     } catch (error) {
       this.setState({
         movieDataError: true,
-        movieErrorResponse: error.response.data.error,
+        movieErrorResponse: "Error",
       });
     }
   }
