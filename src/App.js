@@ -29,7 +29,7 @@ class App extends Component {
   async getWeatherData() {
     try {
       const weatherResponse = await axios.get(
-        `${process.env.REACT_APP_SERVER}/weather?lat=${this.state.locationObject.lat}&lon=${this.state.locationObject.lon}`
+        `${process.env.REACT_APP_SERVER_API}/weather?lat=${this.state.locationObject.lat}&lon=${this.state.locationObject.lon}`
       );
       console.log(weatherResponse.data);
       this.setState({
@@ -47,7 +47,7 @@ class App extends Component {
   async getMovieData() {
     try {
       const movieResponse = await axios.get(
-        `https://kl-city-explorer-api.herokuapp.com/movie?searchQuery=${this.state.input}`
+        `${process.env.REACT_APP_SERVER_API}/movie?searchQuery=${this.state.input}`
       );
       console.log(movieResponse.data);
       this.setState({
