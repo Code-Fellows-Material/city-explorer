@@ -6,6 +6,7 @@ import LocationCard from "./LocationCard";
 import InputForm from "./InputForm";
 import ErrorCard from "./ErrorCard";
 import Weather from "./Weather";
+import Movie from "./Movie";
 
 class App extends Component {
   constructor(props) {
@@ -18,14 +19,17 @@ class App extends Component {
       errorResponse: "",
       weatherData: {},
       weatherDataError: false,
-      WeatherErrorResponse: "",
+      weatherErrorResponse: "",
+      movieData: {},
+      movieDataError: false,
+      movieErrorResponse: "",
     };
   }
 
   async getWeatherData() {
     try {
       const weatherResponse = await axios.get(
-        `http://localhost:3001/weather?searchQuery=${this.state.input}`
+        `http://localhost:3001/weather?lat=${this.state.locationObject.lat}&lon=${this.state.locationObject.lon}`
       );
       console.log(weatherResponse.data);
       this.setState({
@@ -35,7 +39,25 @@ class App extends Component {
     } catch (error) {
       this.setState({
         weatherDataError: true,
-        WeatherErrorResponse: error.response.data.error,
+        weatherErrorResponse: error.response.data.error,
+      });
+    }
+  }
+
+  async getMovieData() {
+    try {
+      const movieResponse = await axios.get(
+        `http://localhost:3001/movie?searchQuery=${this.state.input}`
+      );
+      console.log(movieResponse.data);
+      this.setState({
+        movieDataError: false,
+        movieData: movieResponse.data,
+      });
+    } catch (error) {
+      this.setState({
+        movieDataError: true,
+        movieErrorResponse: error.response.data.error,
       });
     }
   }
@@ -47,7 +69,7 @@ class App extends Component {
       );
       this.setState({
         error: false,
-        locationObject: response.data[0],
+        locationObject: `Error Message: ${response.data[0]}`,
       });
       this.setState({
         ImageURL: `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_IQ_KEY}&center=[${this.state.locationObject.lat},${this.state.locationObject.lon}&zoom=11`,
@@ -56,9 +78,16 @@ class App extends Component {
       this.setState({
         error: true,
         errorResponse: error.response.data.error,
-      });
+        movieDataError: true,
+        movieErrorResponse: "Location Search Failed",
+        weatherDataError: true,
+        weatherErrorResponse: "Location Search Failed",
+      }
+      );
+      return
     }
     this.getWeatherData();
+    this.getMovieData();
   }
 
   setLocation = (inputVal) => {
@@ -93,10 +122,17 @@ class App extends Component {
             )
           )}
           {this.state.weatherDataError ? (
-            <ErrorCard type="Weather" error={this.state.WeatherErrorResponse} />
+            <ErrorCard type="Weather" error={this.state.weatherErrorResponse} />
           ) : (
             Object.keys(this.state.weatherData).length !== 0 && (
               <Weather weatherData={this.state.weatherData} />
+            )
+          )}
+          {this.state.movieDataError ? (
+            <ErrorCard type="Movie" error={this.state.movieErrorResponse} />
+          ) : (
+            Object.keys(this.state.movieData).length !== 0 && (
+              <Movie movieData={this.state.movieData} />
             )
           )}
         </Row>
