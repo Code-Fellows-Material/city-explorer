@@ -94,7 +94,11 @@ class App extends Component {
     if (inputVal === "") {
       this.setState({
         locationObject: {},
+        weatherData: {},
+        movieData: {},
         error: false,
+        movieDataError: false,
+        weatherDataError: false,
       });
     } else {
       this.setState(
