@@ -14,7 +14,7 @@ class LocationCard extends Component {
                 </Container>
                 <Card.Body>
                     <Card.Footer style={{textAlign: 'center' ,fontSize: "1.2em" }}>
-                        Latitude: {this.props.location.lat}, Longitude: {this.props.location.lon}
+                        <b>Latitude:</b> {this.props.location.lat}, <b>Longitude:</b> {this.props.location.lon}
                     </Card.Footer>
                 </Card.Body>
             </Card>

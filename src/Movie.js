@@ -9,7 +9,7 @@ class Movie extends Component {
     movieList = () => {
         let movieArr = [];
         for(let i = 0; i < this.props.movieData.length; i++){
-            movieArr.push(<ListGroupItem style={{textAlign: 'center' ,fontSize: "1.2em" }}>Title: {this.props.movieData[i].title} - Popularity: {this.props.movieData[i].popularity}</ListGroupItem>);
+            movieArr.push(<ListGroupItem style={{fontSize: "1.2em" }}><b>Title:</b> {this.props.movieData[i].title} - <b>Popularity:</b> {this.props.movieData[i].popularity}</ListGroupItem>);
         }
         return movieArr;
     };

@@ -69,7 +69,7 @@ class App extends Component {
       );
       this.setState({
         error: false,
-        locationObject: `Error Message: ${response.data[0]}`,
+        locationObject: response.data[0],
       });
       this.setState({
         ImageURL: `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_IQ_KEY}&center=[${this.state.locationObject.lat},${this.state.locationObject.lon}&zoom=11`,
@@ -77,7 +77,7 @@ class App extends Component {
     } catch (error) {
       this.setState({
         error: true,
-        errorResponse: error.response.data.error,
+        errorResponse: `Error Message: ${error.response.data.error}`,
         movieDataError: true,
         movieErrorResponse: "Location Search Failed",
         weatherDataError: true,
