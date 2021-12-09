@@ -9,7 +9,7 @@ class Weather extends Component {
     weatherList = () => {
         let weatherArr = [];
         for(let i = 0; i < this.props.weatherData.length; i++){
-            weatherArr.push(<ListGroupItem style={{textAlign: 'center' ,fontSize: "1.2em" }}>{this.props.weatherData[i].date} - {this.props.weatherData[i].description}</ListGroupItem>);
+            weatherArr.push(<ListGroupItem style={{fontSize: "1.2em" }}><b>{this.props.weatherData[i].date}</b> - {this.props.weatherData[i].description}</ListGroupItem>);
         }
         return weatherArr;
     };
