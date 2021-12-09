@@ -1,14 +1,14 @@
 # Project Name
 
 **Author**: Kellen Linse
-**Version**: 1.1.0 (increment the patch/fix version number if you make more commits past your first submission)
+**Version**: 1.2.0
 
 ## Overview
-- This demo application utilizes React, Bootstrap, and Axios to access and display API data from locationIQ.com.
+- This demo application utilizes React, Bootstrap, and Axios to access and display API data from locationIQ.com, weatherbit.io, and themoviedb.org
 <!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
 
 ## Getting Started
-- You will need create your own .env file and add your own API Key from locationIQ.com, please see .sample.env for the format you will need to follow.
+- You will need create your own .env file and add your own API Key from locationIQ.com, weatherbit.io, and themoviedb.org, please see .sample.env for the format you will need to follow.
 <!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
 
 ## Architecture
@@ -18,6 +18,7 @@
 ## Change Log
 
 V-1.1.0: 12/6/21  Application now has a fully-functional get requests, with error handling and basic styling.
+V-1.2.0: 12/8/21 Application can now access and display API data from locationIQ.com, weatherbit.io, and themoviedb.org
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
 01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
