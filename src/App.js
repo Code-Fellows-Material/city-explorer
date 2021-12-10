@@ -2,11 +2,15 @@ import React, { Component } from "react";
 import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import Navbar from 'react-bootstrap/Navbar'
 import LocationCard from "./LocationCard";
 import InputForm from "./InputForm";
 import ErrorCard from "./ErrorCard";
 import Weather from "./Weather";
-import Movie from "./Movie";
+import Movies from "./Movies";
+
+const serverURL = process.env.REACT_APP_SERVER_API;
+//const serverURL = 'http://localhost:3001';
 
 class App extends Component {
   constructor(props) {
@@ -29,7 +33,7 @@ class App extends Component {
   async getWeatherData() {
     try {
       const weatherResponse = await axios.get(
-        `${process.env.REACT_APP_SERVER_API}/weather?lat=${this.state.locationObject.lat}&lon=${this.state.locationObject.lon}`
+        `${serverURL}/weather?lat=${this.state.locationObject.lat}&lon=${this.state.locationObject.lon}`
       );
       console.log(weatherResponse.data);
       this.setState({
@@ -47,7 +51,7 @@ class App extends Component {
   async getMovieData() {
     try {
       const movieResponse = await axios.get(
-        `${process.env.REACT_APP_SERVER_API}/movie?searchQuery=${this.state.input}`
+        `${serverURL}/movies?searchQuery=${this.state.input}`
       );
       console.log(movieResponse.data);
       this.setState({
@@ -112,33 +116,34 @@ class App extends Component {
 
   render() {
     return (
-      <Container id="app-container" fluid>
-        <InputForm setLocation={this.setLocation} input={this.state.input} />
+      <Container id="app-container" fluid style={{padding: '0'}}>
+        <Navbar variant="dark" style={{backgroundColor: 'rgba(0, 0, 255, .3)'}}>
+          <Container>
+            <Navbar.Brand style={{color: 'rgba(0, 0, 255, .5)', fontSize: "3em", fontWeight: 'bold' }}>City Explorer.</Navbar.Brand>
+          </Container>
+        </Navbar>
+        <Container className="px-1">
+          <InputForm setLocation={this.setLocation} input={this.state.input} />
+        </Container>
         <Row sm={1} md={1} lg={1} xl={2}>
-          {this.state.error ? (
-            <ErrorCard type="Location" error={this.state.errorResponse} />
-          ) : (
-            Object.keys(this.state.locationObject).length !== 0 && (
-              <LocationCard
-                img={this.state.ImageURL}
-                location={this.state.locationObject}
-              />
-            )
-          )}
-          {this.state.weatherDataError ? (
-            <ErrorCard type="Weather" error={this.state.weatherErrorResponse} />
-          ) : (
-            Object.keys(this.state.weatherData).length !== 0 && (
-              <Weather weatherData={this.state.weatherData} />
-            )
-          )}
-          {this.state.movieDataError ? (
-            <ErrorCard type="Movie" error={this.state.movieErrorResponse} />
-          ) : (
-            Object.keys(this.state.movieData).length !== 0 && (
-              <Movie movieData={this.state.movieData} />
-            )
-          )}
+          <Container className="p-1">
+          { this.state.error ? (<ErrorCard type="Location" error={this.state.errorResponse} />) 
+          : 
+          (Object.keys(this.state.locationObject).length !== 0 && (<LocationCard img={this.state.ImageURL} location={this.state.locationObject}/>))
+          }
+          </ Container>
+          <Container className="p-1">
+          {this.state.weatherDataError ? ( <ErrorCard type="Weather" error={this.state.weatherErrorResponse} />) 
+          : 
+          (Object.keys(this.state.weatherData).length !== 0 && ( <Weather weatherData={this.state.weatherData} />))
+          }
+          </ Container>
+          <Container className="p-1">
+          {this.state.movieDataError ? ( <ErrorCard type="Movie" error={this.state.movieErrorResponse} />)
+          :
+          (Object.keys(this.state.movieData).length !== 0 && (<Movies movieData={this.state.movieData} />))
+          }
+          </ Container>
         </Row>
       </Container>
     );
