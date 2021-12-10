@@ -66,6 +66,11 @@ class App extends Component {
     }
   }
 
+  doTheThings = () => {
+    this.getWeatherData();
+    this.getMovieData();
+  }
+
   async getLocationData() {
     try {
       const response = await axios.get(
@@ -74,7 +79,7 @@ class App extends Component {
       this.setState({
         error: false,
         locationObject: response.data[0],
-      });
+      }, this.doTheThings);
       this.setState({
         ImageURL: `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_IQ_KEY}&center=[${this.state.locationObject.lat},${this.state.locationObject.lon}&zoom=11`,
       });
@@ -90,8 +95,6 @@ class App extends Component {
       );
       return
     }
-    this.getWeatherData();
-    this.getMovieData();
   }
 
   setLocation = (inputVal) => {
