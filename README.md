@@ -19,6 +19,7 @@
 
 V-1.1.0: 12/6/21  Application now has a fully-functional get requests, with error handling and basic styling.
 V-1.2.0: 12/8/21 Application can now access and display API data from locationIQ.com, weatherbit.io, and themoviedb.org
+V-1.3.0: 12/9/21 Refactor application and add styling.
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
 01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
@@ -52,3 +53,18 @@ Start time: 5:15
 Finish time: 8:15
 
 Actual time needed to complete: 3hrs
+
+--------
+
+## Time Estimate 1
+
+Name of feature: Feature 2
+
+Estimate of time needed to complete: 2.5hrs
+
+Start time: 5:00
+
+Finish time: 8:30
+
+Actual time needed to complete: 1.5hrs
+
