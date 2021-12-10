@@ -13,15 +13,15 @@ class InputForm extends Component {
     render() {
         return (
             <Container className="p-5">
-                <Card border="dark" style={{ width: "30rem", margin: "auto" }}>
-                    <Card.Header style={{ textAlign: 'center' ,fontSize: "2em" }}>Search</Card.Header>
+                <Card className="mx-auto" style={{minWidth: '600px', maxWidth: '80%'}} border="dark">
+                    <Card.Header className="top-card-header">Search</Card.Header>
                     <Card.Body>
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Group className="mb-3">
-                                <Form.Label style={{fontSize: "1.2em" }}>Enter Location:</Form.Label>
-                                <Form.Control type="text" name="input" placeholder="Explore!" />
+                                <Form.Label style={{color: 'rgba(0, 0, 255, .6)', fontSize: "1.2em", fontWeight: 'bold' }} >Enter Location:</Form.Label>
+                                <Form.Control style={{ fontSize: "1.2em", fontWeight: 'bold', textAlign: 'center'}} type="text" name="input" placeholder="Explore!" />
                             </Form.Group>
-                            <Button className="d-grid gap-2 col-6 mx-auto" variant="primary" type="submit">
+                            <Button style={{backgroundColor: 'rgba(0, 0, 255, .5)', fontSize: "2em", fontWeight: 'bold' }} className="d-grid gap-2 col-6 mx-auto" variant="primary" type="submit">
                                 Submit
                             </Button>
                         </Form>
